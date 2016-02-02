@@ -18,7 +18,7 @@ mv jdk* jdk
 
 # INSTALL TOMCAT
 RUN  cd /opt/ && \
-wget -c -O apache-tomcat-6.0.29.tar.gz "http://92fdd04a-b80f-4e51-61cb-fca5a00c490f.daoapp.io/index.php?share/fileDownload&user=admin&sid=BbSleXUx" && \
+wget http://mirrors.noc.im/apache/tomcat/tomcat-6/v6.0.44/bin/apache-tomcat-6.0.44.tar.gz && \
 tar -vxf apache-tomcat-*.gz && \
 rm -rf *.gz && \
 mv apache-tomcat-* tomcat
