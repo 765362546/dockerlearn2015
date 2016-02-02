@@ -2,16 +2,26 @@
 #/opt/jdk
 #/opt/tomcat
 FROM centos:6
+
+RUN yum install -y wget tar
 ENV JAVA_HOME /opt/jak
 ENV CATALINA_HOME /opt/tomcat
 
-VOLUME data /volume
 
 # INSTALL JAVA_HOME
-RUN cp /volume/software/jdk-6u21-linux-x64.bin /opt/ && cd /opt/ && chmod +x *.bin && ./jdk*.bin &> /dev/null && rm -rf *.bin && mv jdk* jdk
+RUN  cd /opt/ && \
+wget -c -O jdk-6u21-linux-x64.bin "http://92fdd04a-b80f-4e51-61cb-fca5a00c490f.daoapp.io/index.php?share/fileDownload&user=admin&sid=BkhgjAwN" && \
+chmod +x *.bin && \
+yes|./jdk*.bin && \
+rm -rf *.bin && \
+mv jdk* jdk
 
 # INSTALL TOMCAT
-RUN cp /volume/software/apache-tomcat-6.0.29.tar.gz /opt/ && cd /opt/ && tar -vxf apache-tomcat-*.gz && rm -rf *.gz && mv apache-tomcat-* tomcat
+RUN  cd /opt/ && \
+wget -c -O apache-tomcat-6.0.29.tar.gz "http://92fdd04a-b80f-4e51-61cb-fca5a00c490f.daoapp.io/index.php?share/fileDownload&user=admin&sid=BbSleXUx" && \
+tar -vxf apache-tomcat-*.gz && \
+rm -rf *.gz && \
+mv apache-tomcat-* tomcat
 
 ADD create_tomcat_admin_user.sh /create_tomcat_admin_user.sh
 ADD run.sh /run.sh
