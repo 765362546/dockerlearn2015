@@ -4,7 +4,7 @@
 FROM centos:6
 
 RUN yum install -y wget tar
-ENV JAVA_HOME /opt/jak
+ENV JAVA_HOME /opt/jdk
 ENV CATALINA_HOME /opt/tomcat
 
 
