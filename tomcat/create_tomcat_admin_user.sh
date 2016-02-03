@@ -6,7 +6,7 @@ if [ -f /.tomcat_admin_created ]; then
 fi
 
 #generate password
-PASS=${TOMCAT_PASS:-$(pwgen -s 12 1)}
+PASS=${TOMCAT_PASS:-123123}
 _word=$( [ ${TOMCAT_PASS} ] && echo "preset" || echo "random" )
 
 echo "=> Creating and admin user with a ${_word} password in Tomcat"
